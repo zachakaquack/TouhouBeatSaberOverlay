@@ -4,7 +4,7 @@ import websockets
 from obswebsocket import obsws, requests
 
 # create the obs websocket stuff
-ws = obsws(host="localhost", port=4455, password="DBikFxnvjhsgwDYo")
+ws = obsws(host="localhost", port=4455, password="os9qXemHvW7Npv4e")
 ws.connect()
 
 new_misses = 0
@@ -82,6 +82,7 @@ def livedata_change_obs_text(score, rank, combo, notesspawned, acc, timepassed, 
 
 
 def mapinfo_change_obs_text(mapper, mapname, author, bpm, difficulty):
+    ws.call(requests.SetInputSettings(inputName="miss_text", inputSettings={"text": "0"}, overlay=True))
     ws.call(requests.SetInputSettings(inputName="mapper_name_text", inputSettings={"text": str(mapper)}, overlay=True))
     ws.call(requests.SetInputSettings(inputName="map_name_text", inputSettings={"text": str(mapname)}, overlay=True))
     ws.call(requests.SetInputSettings(inputName="author_name_text", inputSettings={"text": str(author)}, overlay=True))
